@@ -1,11 +1,12 @@
 {
-  "name": "react_native_douBan",
+  "name": "react_native_douban",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "run-iOS": "react-native run-ios",
     "run-Android": "react-native run-android",
+    "build-android": "cd android && ./gradlew assembleRelease",
     "test": "jest"
   },
   "dependencies": {

@@ -17,6 +17,12 @@ const Tab = createBottomTabNavigator(
         Search: SearchScreen
     },
     {
+        navigationOptions: ({navigation}) => {
+            const {index} = navigation.state;
+            return {
+                title: index === 0 ? '首页' : '搜索'
+            }
+        },
         defaultNavigationOptions: ({navigation}) => ({
             tabBarIcon: ({focused, tintColor}) => {
                 const {routeName} = navigation.state;

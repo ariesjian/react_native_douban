@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-import {View, TextInput, StyleSheet, FlatList, Text, Image, Button} from "react-native";
+import {View, TextInput, StyleSheet, FlatList, Text, Image, TouchableOpacity} from "react-native";
 import {getSearch} from "../../service/api";
 
 
@@ -50,16 +50,15 @@ export default class extends PureComponent {
                         onChangeText={(text) => this.setState({inputValue: text})}
                         value={this.state.inputValue}
                     />
-                    <Button
-                        style={sty.btn_search}
-                        title={'搜索'}
-                        onPress={() => {
-                            if (this.state.inputValue && this.state.inputValue.length > 0) {
-                                this.getSearchData(this.state.inputValue)
-                            }
+                    <TouchableOpacity style={sty.btn_search} onPress={() => {
+                        if (this.state.inputValue && this.state.inputValue.length > 0) {
+                            this.getSearchData(this.state.inputValue)
+                        }
 
-                        }}
-                    />
+                    }}>
+                        <Text style={sty.btn_text}>搜索</Text>
+                    </TouchableOpacity>
+
                 </View>
                 <FlatList
                     style={sty.content}
@@ -77,22 +76,31 @@ const sty = StyleSheet.create({
         flex: 1
     },
     iput_wrap: {
-        flex: 1,
         height: 50,
         display: 'flex',
         flexDirection: 'row',
     },
     input_: {
         flex: 1,
-        height: 50,
+        height: 44,
         borderWidth: 1,
         borderRadius: 5,
         borderColor: "gray",
-        marginRight: 50,
+        marginHorizontal: 10,
+        marginTop: 10
     },
     btn_search: {
-        // flex: 0.3,
-        // height: 55,
+        marginTop: 10,
+        marginRight: 10,
+        height: 44,
+        width: 80,
+        borderRadius: 4,
+        backgroundColor: 'blue',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    btn_text: {
+        color: '#fff'
     },
     list: {
         flex: 1,

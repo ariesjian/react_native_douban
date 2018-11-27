@@ -5,11 +5,13 @@ import {
     StyleSheet,
     Image,
     ScrollView,
-    TouchableHighlight
+    TouchableHighlight,
+    Dimensions
 } from "react-native";
 import Swiper from "react-native-swiper";
 import {getInTheaters} from "../../service/api";
 
+const { height: D_HEIGHT, width: D_WIDTH } = Dimensions.get('window');
 export default class extends PureComponent {
     state = {
         start: 1,
@@ -50,7 +52,6 @@ export default class extends PureComponent {
                     <Swiper
                         style={sty.swiperWrap}
                         height={200}
-                        // showsButtons={true}
                         autoplay={true}
                     >
                         {contentList.map((d, index) => {
@@ -59,7 +60,8 @@ export default class extends PureComponent {
                                     key={index}
                                     onPress={() => {
                                         this.props.navigation.navigate("Detail", {
-                                            id: d.id
+                                            id: d.id,
+                                            title: d.title
                                         });
                                     }}
                                 >
@@ -83,9 +85,9 @@ export default class extends PureComponent {
                             <TouchableHighlight
                                 key={index + 'a'}
                                 onPress={() => {
-                                    console.log("detail", "222");
                                     this.props.navigation.navigate("Detail", {
-                                        id: item.id
+                                        id: item.id,
+                                        title: item.title
                                     });
                                 }}
                             >
@@ -137,12 +139,12 @@ const sty = StyleSheet.create({
         // height: 200
     },
     swiper: {
-        width: 375,
+        width: '100%',
         height: 200,
         position: "relative"
     },
     swiper_pic: {
-        width: 375,
+        width: '100%',
         height: 200,
         position: "absolute",
         left: 0,
@@ -165,15 +167,16 @@ const sty = StyleSheet.create({
         flex: 3,
         justifyContent: "flex-start",
         flexDirection: "row",
-        padding: 1,
+        padding: 5,
         flexWrap: "wrap"
     },
     item: {
         height: 180,
-        width: 120
+        width: (D_WIDTH - 40) / 3,
+        margin: 5
     },
     pic_info: {
-        width: 120,
+        width: '100%',
         height: 120,
         position: "relative"
     },
@@ -182,7 +185,7 @@ const sty = StyleSheet.create({
         height: 120,
         left: 0,
         top: 0,
-        width: 120
+        width: '100%'
     },
     vip: {
         position: "absolute",

@@ -3,6 +3,13 @@ import {Text, View, StyleSheet, Image, ScrollView, Button, FlatList} from "react
 import {getDetail} from "../../service/api";
 
 export default class extends PureComponent {
+    static navigationOptions = ({ navigation }) => {
+        const { title } = navigation.state.params || {};
+        return {
+            title,
+        };
+    };
+
     state = {
         start: 1,
         detailObj: {}, // 电影详情对象
@@ -79,9 +86,8 @@ export default class extends PureComponent {
                     <FlatList
                         style={sty.lists}
                         data={detailObj.photos}
-                        keyExtractor={(item, index) => index}
+                        keyExtractor={(item, index) => String(index)}
                         renderItem={(v) => {
-                            console.log(v, '9999');
                             return (
                                 <View style={sty.pic_wrap}>
                                     <Image key={v.index} style={sty.pics} source={{uri: v.item.image}}/>
@@ -90,7 +96,6 @@ export default class extends PureComponent {
                         }}
                         horizontal={true}
                         showsHorizontalScrollIndicator={false}
-
                     />
 
                 </View>
