@@ -8,13 +8,13 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import HomeScreen from "./Home";
 import DetailsScreen from "./Detail";
 import OutLinkScreen from "./OutLink";
-import SettingsScreen from "./Settings";
+import SearchScreen from "./Search";
 
 const Tab = createBottomTabNavigator(
     // 配置tab切换的路由
     {
         Home: HomeScreen,
-        Settings: SettingsScreen
+        Search: SearchScreen
     },
     {
         defaultNavigationOptions: ({navigation}) => ({
@@ -23,7 +23,7 @@ const Tab = createBottomTabNavigator(
                 let iconName;
                 if (routeName === "Home") {
                     iconName = `ios-home`;
-                } else if (routeName === "Settings") {
+                } else if (routeName === "Search") {
                     iconName = `ios-settings`;
                 }
 
