@@ -52,7 +52,7 @@ export default class extends PureComponent {
             {detailObj.genres &&
             detailObj.genres.map((item,v)=>{
               return(
-                <Text>{detailObj.year} /{item}{v+1<detailObj.genres.length?'/':''}</Text>
+                <Text key={v}>{detailObj.year} /{item}{v+1<detailObj.genres.length?'/':''}</Text>
               )
             })
             }

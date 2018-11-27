@@ -1,4 +1,4 @@
-package com.awesomeproject;
+package com.react_native_douBan;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
@@ -12,7 +12,7 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "AwesomeProject";
+        return "react_native_douBan";
     }
 
       @Override

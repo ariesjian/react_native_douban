@@ -67,7 +67,7 @@ export default class extends PureComponent {
           {contentList.map((item, index) => {
             return (
               <TouchableHighlight
-                key={index}
+                key={index+'a'}
                 onPress={() => {
                   console.log("detail", "222");
                   this.props.navigation.navigate("Detail", {

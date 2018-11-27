@@ -1,4 +1,4 @@
-package com.awesomeproject;
+package com.react_native_douBan;
 
 import android.app.Application;
 
