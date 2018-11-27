@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react";
 import {Text, View, StyleSheet, Image, ScrollView, Button,WebView} from "react-native";
 import {getDetail} from "../../service/api";
+import TestOne from "../../components/TestOne";
 
 export default class extends PureComponent {
     state = {
