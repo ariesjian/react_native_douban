@@ -78,7 +78,7 @@ export default class extends PureComponent {
                         });
                         console.log('需要完成的功能 播放啊')
                     }}
-                    title="在线1观看"
+                    title="在线观看"
                 />
                 {detailObj.photos && detailObj.photos.length > 0 &&
                 <View style={sty.list_actor}>

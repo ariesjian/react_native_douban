@@ -11,31 +11,34 @@ import {
 import Swiper from "react-native-swiper";
 import {getInTheaters} from "../../service/api";
 
-const { height: D_HEIGHT, width: D_WIDTH } = Dimensions.get('window');
+const {height: D_HEIGHT, width: D_WIDTH} = Dimensions.get('window');
 export default class extends PureComponent {
     state = {
         start: 1,
-        contentList: [] // 热映列表数据
+        contentList: [],// 热映列表数据
+        total: '',// 总条数
     };
 
     componentDidMount() {
-        this.getInTheatersList();
+        this.getInTheatersList(false);
     }
 
-    getInTheatersList = async () => {
+    getInTheatersList = async (startNew) => {
         // 获取热映列表
 
         const params = {
             apikey: "0b2bdeda43b5688921839c8ecb20399b",
             city: "上海",
-            start: this.state.start,
+            start: startNew ? startNew : this.state.start,
             count: 15
         };
         try {
             const res = await getInTheaters(params);
             if (res && res.subjects && res.subjects.length > 0) {
                 this.setState({
-                    contentList: res.subjects
+                    contentList: this.state.contentList.concat(res.subjects),
+                    total: res.total,
+                    start: res.start,
                 });
             }
             console.log(res);
@@ -45,9 +48,21 @@ export default class extends PureComponent {
     };
 
     render() {
-        const {contentList} = this.state;
+        const {contentList, start, total} = this.state;
         return (
-            <ScrollView style={sty.container}>
+            <ScrollView
+                style={sty.container}
+                onMomentumScrollEnd={() => {
+                    if ((start-0) * 15 >= (total-0)) {
+                        console.log('已经没有更多了')
+                    } else {
+                        const startNew = this.state.start + 1;
+                        console.log('要分页了',startNew);
+                        this.getInTheatersList(startNew)
+                    }
+
+                }}
+            >
                 <View style={sty.top}>
                     <Swiper
                         style={sty.swiperWrap}

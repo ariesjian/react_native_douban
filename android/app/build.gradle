@@ -97,7 +97,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
 
-    defaultConfig {
+    defaultConfig { // 每次打包都要修改版本号 否则代码没有更新
         applicationId "com.react_native_douBan"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
@@ -115,7 +115,7 @@ android {
             include "armeabi-v7a"//, "x86"
         }
     }
-    signingConfigs {
+    signingConfigs {   // 签名配置
         release {
             if (project.hasProperty('MYAPP_RELEASE_STORE_FILE')) {
                 storeFile file(MYAPP_RELEASE_STORE_FILE)
@@ -125,13 +125,13 @@ android {
             }
         }
     }
-    buildTypes {
+    buildTypes {   // 开发环境的打包
         debug {
             ndk {
                 abiFilters "armeabi-v7a", "x86"
             }
         }
-        release {
+        release {  // 生产环境的打包
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             signingConfig signingConfigs.release
