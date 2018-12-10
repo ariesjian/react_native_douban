@@ -4,7 +4,7 @@
 ###### 效果图：
 
 
-![alt text](https://user-gold-cdn.xitu.io/2018/12/3/16773adc570748e9?w=507&h=743&f=png&s=573023)
+![](https://user-gold-cdn.xitu.io/2018/12/3/16773adc570748e9?w=507&h=743&f=png&s=573023)
 
 ![](https://user-gold-cdn.xitu.io/2018/12/3/16773aec1c2ea78b?w=507&h=723&f=png&s=192667)
 
